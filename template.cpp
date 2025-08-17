@@ -15,7 +15,15 @@ using ld = long double;
 
 #define int ll
 
-//------------------------------usings------------------------------
+/*
+
+        ██    ██ ███████ ██ ███    ██  ██████  ███████      █████  ███    ██ ██████      ██████  ███████ ███████ ██ ███    ██ ███████ ███████ 
+        ██    ██ ██      ██ ████   ██ ██       ██          ██   ██ ████   ██ ██   ██     ██   ██ ██      ██      ██ ████   ██ ██      ██      
+        ██    ██ ███████ ██ ██ ██  ██ ██   ███ ███████     ███████ ██ ██  ██ ██   ██     ██   ██ █████   █████   ██ ██ ██  ██ █████   ███████ 
+        ██    ██      ██ ██ ██  ██ ██ ██    ██      ██     ██   ██ ██  ██ ██ ██   ██     ██   ██ ██      ██      ██ ██  ██ ██ ██           ██ 
+         ██████  ███████ ██ ██   ████  ██████  ███████     ██   ██ ██   ████ ██████      ██████  ███████ ██      ██ ██   ████ ███████ ███████ 
+                                                                                                                                    
+*/                                                                                                                                          
 
 template<typename set_type> using ordered_set = tree<
     set_type,
@@ -53,7 +61,7 @@ using vld = vector<ld>;
 using vvld = vector<vector<ld>>;
 using vvvld = vector<vector<vector<ld>>>;
 
-//------------------------------ defines ------------------------------
+#define y1 y1_
 
 #define fi first
 #define se second
@@ -74,162 +82,232 @@ using vvvld = vector<vector<vector<ld>>>;
 #define forj1(N) for (int j = 1; j < N; ++j)
 #define fork1(N) for (int k = 1; k < N; ++k)
 
-//------------------------------ << and >> ------------------------------
-template<typename T>
-std::istream& operator >> (std::istream& in, vector<T>& arr) {
+template<typename T> std::istream& operator>>(std::istream& in, vector<T>& arr) {
    for (T& object : arr) {
        in >> object;
    }
    return in;
 }
 
-template<typename T>
-std::ostream& operator<<(std::ostream& out, const vector<T>& arr) {
+template<typename T> std::ostream& operator<<(std::ostream& out, const vector<T>& arr) {
    for (const T& object : arr) {
        out << object << ' ';
    }
    return out;
 }
 
-template<typename T>
-std::ostream& operator<<(std::ostream& out, const vector<vector<T>>& arr) {
+template<typename T> std::ostream& operator<<(std::ostream& out, const vector<vector<T>>& arr) {
    for (const vector<T>& object : arr) {
        out << object << '\n';
    }
    return out;
 }
 
-template<typename T1, typename T2>
-std::istream& operator >> (std::istream& in, pair<T1, T2>& p) {
+template<typename T1, typename T2> std::istream& operator>>(std::istream& in, pair<T1, T2>& p) {
    in >> p.first >> p.second;
    return in;
 }
 
-template<typename T1, typename T2>
-std::ostream& operator<<(std::ostream& out, const pair<T1, T2>& p) {
+template<typename T1, typename T2> std::ostream& operator<<(std::ostream& out, const pair<T1, T2>& p) {
    out << p.first << ' ' << p.second << '\n';
    return out;
 }
 
-template<typename T>
-std::ostream& operator<<(std::ostream& out, const set<T>& S) {
+template<typename T> std::ostream& operator<<(std::ostream& out, const set<T>& S) {
    for (const T& V : S) {
        cout << V << ' ';
    }
    return out;
 }
 
-template<typename T>
-void cin0(vector<T>& arr) {
-   for (int i = 0; i < arr.size(); ++i) {
+template<typename T> std::ostream& operator<<(std::ostream& out, const unordered_set<T>& S) {
+   for (const T& V : S) {
+       cout << V << ' ';
+   }
+   return out;
+}
+
+template<typename T> std::ostream& operator<<(std::ostream& out, const multiset<T>& S) {
+   for (const T& V : S) {
+       cout << V << ' ';
+   }
+   return out;
+}
+
+/*
+
+        ███████ ██    ██ ███    ██  ██████ ████████ ██  ██████  ███    ██ ███████ 
+        ██      ██    ██ ████   ██ ██         ██    ██ ██    ██ ████   ██ ██      
+        █████   ██    ██ ██ ██  ██ ██         ██    ██ ██    ██ ██ ██  ██ ███████ 
+        ██      ██    ██ ██  ██ ██ ██         ██    ██ ██    ██ ██  ██ ██      ██ 
+        ██       ██████  ██   ████  ██████    ██    ██  ██████  ██   ████ ███████
+                                                                      
+*/
+
+// cin/cout
+
+template<typename T> void cin0(vector<T>& arr) {
+   for (size_t i = 0; i < arr.size(); ++i) {
        cin >> arr[i];
    }
 }
 
-template<typename T>
-void cin1(vector<T>& arr) {
-   for (int i = 1; i < arr.size(); ++i) {
+template<typename T> void cin1(vector<T>& arr) {
+   for (size_t i = 1; i < arr.size(); ++i) {
        cin >> arr[i];
    }
 }
 
-template<typename T>
-void cout0(const vector<T>& arr) {
-   for (int i = 0; i < (int)arr.size() - 1; ++i) {
-       cout << arr[i] << ' ';
-   }
-   cout << arr.back() << ' ';
-}
-
-template<typename T>
-void cout0(const vector<vector<T>>& arr) {
-   for (int i = 0; i < arr.size(); ++i) {
-       for (int j = 0; j < (int)arr[i].size() - 1; ++j) {
-           cout << arr[i][j] << ' ';
-       }
-       cout << arr[i].back() << '\n';
-   }
-}
-
-template<typename T>
-void cout1(const vector<T>& arr) {
-   for (int i = 1; i < (int)arr.size() - 1; ++i) {
+template<typename T> void cout0(const vector<T>& arr) {
+   for (size_t i = 0; i + 1 < arr.size(); ++i) {
        cout << arr[i] << ' ';
    }
    cout << arr.back() << '\n';
 }
 
-template<typename T>
-void cout1(const vector<vector<T>>& arr) {
-   for (int i = 1; i < arr.size(); ++i) {
-       for (int j = 1; j < (int)arr[i].size() - 1; ++j) {
+template<typename T> void cout0(const vector<vector<T>>& arr) {
+   for (size_t i = 0; i < arr.size(); ++i) {
+       for (size_t j = 0; j + 1 < arr[i].size(); ++j) {
            cout << arr[i][j] << ' ';
        }
        cout << arr[i].back() << '\n';
    }
 }
 
-//------------------------------ min, max and summed ------------------------------
-template<typename T>
-T summed(const vector<T>& arr) {
-   if (arr.size() == 0) {
-       return 0;
+template<typename T> void cout1(const vector<T>& arr) {
+   for (size_t i = 1; i + 1 < arr.size(); ++i) {
+       cout << arr[i] << ' ';
    }
-   T V = arr[0];
-   for (int i = 1; i < arr.size(); ++i) {
-       V += arr[i];
-   }
-   return V;
+   cout << arr.back() << '\n';
 }
 
-template<typename T>
-T max(const vector<T>& arr) {
+template<typename T> void cout1(const vector<vector<T>>& arr) {
+   for (size_t i = 1; i < arr.size(); ++i) {
+       for (size_t j = 1; j + 1 < arr[i].size(); ++j) {
+           cout << arr[i][j] << ' ';
+       }
+       cout << arr[i].back() << '\n';
+   }
+}
+
+// summed
+
+template<typename T> T summed(const vector<T>& arr) {
+   T result = static_cast<T>(0);
+   for (const auto& V: arr) {
+       result += V;
+   }
+   return result;
+}
+
+template<typename T> T summed(const set<T>& st) {
+   T result = static_cast<T>(0);
+   for (const auto& V: st) {
+       result += V;
+   }
+   return result;
+}
+
+template<typename T> T summed(const unordered_set<T>& st) {
+   T result = static_cast<T>(0);
+   for (const auto& V: st) {
+       result += V;
+   }
+   return result;
+}
+
+template<typename T> T summed(const multiset<T>& st) {
+   T result = static_cast<T>(0);
+   for (const auto& V: st) {
+       result += V;
+   }
+   return result;
+}
+
+// max/min
+
+template<typename T> T max(const vector<T>& arr) {
    T V = arr[0];
-   for (int i = 1; i < arr.size(); ++i) {
+   for (size_t i = 1; i < arr.size(); ++i) {
        V = max(V, arr[i]);
    }
    return V;
 }
 
-template<typename T>
-T max(const vector<vector<T>>& arr) {
-   T V = max(arr[0]);
-   for (int i = 1; i < arr.size(); ++i) {
-       V = max(V, max(arr[i]));
+template<typename T> T max(const vector<vector<T>>& arr) {
+   T result = max(arr[0]);
+   for (size_t i = 1; i < arr.size(); ++i) {
+       result = max(result, max(arr[i]));
    }
-   return V;
+   return result;
 }
 
-template<typename T>
-T min(const vector<T>& arr) {
+template<typename T> T max(const set<T>& st) {
+   return *(--st.end());
+}
+
+template<typename T> T max(const unordered_set<T>& st) {
+    T result = *st.begin();
+    for (const auto& V: st) {
+        result = max(result, V);
+    }
+    return result;
+}
+
+template<typename T> T max(const multiset<T>& st) {
+   return *(--st.end());
+}
+
+template<typename T> T min(const vector<T>& arr) {
    T V = arr[0];
-   for (int i = 1; i < arr.size(); ++i) {
+   for (size_t i = 1; i < arr.size(); ++i) {
        V = min(V, arr[i]);
    }
    return V;
 }
 
-template<typename T>
-void setmax(T& V1, const T& V2) {
+template<typename T> T min(const vector<vector<T>>& arr) {
+   T result = min(arr[0]);
+   for (size_t i = 1; i < arr.size(); ++i) {
+       result = min(result, min(arr[i]));
+   }
+   return result;
+}
+
+template<typename T> T min(const set<T>& st) {
+   return *(st.begin());
+}
+
+template<typename T> T min(const unordered_set<T>& st) {
+    T result = *st.begin();
+    for (const auto& V: st) {
+        result = min(result, V);
+    }
+    return result;
+}
+
+template<typename T> T min(const multiset<T>& st) {
+   return *(st.begin());
+}
+
+template<typename T> void setmax(T& V1, const T& V2) {
    V1 = max(V1, V2);
 }
 
-template<typename T>
-void setmin(T& V1, const T& V2) {
+template<typename T> void setmin(T& V1, const T& V2) {
    V1 = min(V1, V2);
 }
 
-//------------------------------ sort and reverse ------------------------------
-template<typename T>
-void sort(T& obj) {
+// sort
+
+template<typename T> void sort(T& obj) {
    sort(all(obj));
 }
 
-template<typename T>
-void usort(T& obj) {
+template<typename T> void usort(T& obj) {
    sort(all(obj));
    int p = 0;
-   for (int i = 1; i < obj.size(); ++i) {
+   for (size_t i = 1; i < obj.size(); ++i) {
        if (obj[i] != obj[p]) {
            obj[++p] = obj[i];
        }
@@ -237,41 +315,36 @@ void usort(T& obj) {
    obj.resize(p + 1);
 }
 
-template<typename T>
-void rsort(T& obj) {
+template<typename T> void rsort(T& obj) {
    sort(rall(obj));
 }
 
-template<typename T>
-void reverse(T& obj) {
+template<typename T> void reverse(T& obj) {
    reverse(all(obj));
 }
 
-template<typename T>
-T sorted(T obj) {
+template<typename T> T sorted(T obj) {
    sort(obj);
    return obj;
 }
 
-template<typename T>
-T usorted(T obj) {
+template<typename T> T usorted(T obj) {
    usort(obj);
    return obj;
 }
 
-template<typename T>
-T rsorted(T obj) {
+template<typename T> T rsorted(T obj) {
    rsort(obj);
    return obj;
 }
 
-template<typename T>
-T reversed(T obj) {
+template<typename T> T reversed(T obj) {
    reverse(obj);
    return obj;
 }
 
-//------------------------------ math ------------------------------
+// math
+
 int sgn(int V) {
    if (V < 0) {
        return -1;
@@ -330,11 +403,20 @@ bool isPrime(int N) {
    return true;
 }
 
-//------------------------------code------------------------------
+/*
+
+         ██████  ██████  ██████  ███████     ███████ ████████  █████  ██████  ████████ ███████     ██   ██ ███████ ██████  ███████ 
+        ██      ██    ██ ██   ██ ██          ██         ██    ██   ██ ██   ██    ██    ██          ██   ██ ██      ██   ██ ██      
+        ██      ██    ██ ██   ██ █████       ███████    ██    ███████ ██████     ██    ███████     ███████ █████   ██████  █████   
+        ██      ██    ██ ██   ██ ██               ██    ██    ██   ██ ██   ██    ██         ██     ██   ██ ██      ██   ██ ██      
+         ██████  ██████  ██████  ███████     ███████    ██    ██   ██ ██   ██    ██    ███████     ██   ██ ███████ ██   ██ ███████ 
+                                                                                                                     
+*/                                                                                                                                                               
+
 void solve();
 void precalc();
 
-//mt19937 mt_rand(chrono::steady_clock::now().time_since_epoch().count());
+mt19937 mt_rand(chrono::steady_clock::now().time_since_epoch().count());
 
 int32_t main() {
 
@@ -369,18 +451,6 @@ void precalc() {}
 
 void solve() {
 
-    cout << 2 << endl;
+    
 
-    int V;
-    cin >> V;
-
-    cout << V;
-
-    fori(2) {
-        forj(2) {
-            fork(2) {
-                cout << V << "\n";
-            }
-        }
-    }
 }
