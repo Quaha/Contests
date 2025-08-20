@@ -313,7 +313,15 @@ template<typename T> void setmax(T& V1, const T& V2) {
    V1 = max(V1, V2);
 }
 
+template<typename T> void amax(T& V1, const T& V2) {
+   V1 = max(V1, V2);
+}
+
 template<typename T> void setmin(T& V1, const T& V2) {
+   V1 = min(V1, V2);
+}
+
+template<typename T> void amin(T& V1, const T& V2) {
    V1 = min(V1, V2);
 }
 
