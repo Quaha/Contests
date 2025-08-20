@@ -11,6 +11,7 @@ using namespace std;
 using namespace __gnu_pbds;
 
 using ll = long long;
+using ull = unsigned long long;
 using ld = long double;
 
 #define int ll
@@ -38,6 +39,11 @@ using vii = vector<pair<int, int>>;
 using vvii = vector<vector<pair<int, int>>>;
 using vvvii = vector<vector<vector<pair<int, int>>>>;
 
+using pll = pair<long long, long long>;
+using vll = vector<pair<long long, long long>>;
+using vvll = vector<vector<pair<long long, long long>>>;
+using vvvll = vector<vector<vector<pair<long long, long long>>>>;
+
 using vb = vector<bool>;
 using vvb = vector<vector<bool>>;
 using vvvb = vector<vector<vector<bool>>>;
@@ -47,6 +53,16 @@ using vi = vector<int>;
 using vvi = vector<vector<int>>;
 using vvvi = vector<vector<vector<int>>>;
 using vvvvi = vector<vector<vector<vector<int>>>>;
+
+using vl = vector<long long>;
+using vvl = vector<vector<long long>>;
+using vvvl = vector<vector<vector<long long>>>;
+using vvvvl = vector<vector<vector<vector<long long>>>>;
+
+using vl = vector<long long>;
+using vvl = vector<vector<long long>>;
+using vvvl = vector<vector<vector<long long>>>;
+using vvvvl = vector<vector<vector<vector<long long>>>>;
 
 using vc = vector<char>;
 using vvc = vector<vector<char>>;
@@ -67,12 +83,15 @@ using vvvld = vector<vector<vector<ld>>>;
 #define se second
 
 #define co continue
+#define con continue
 #define pb push_back
 
 #define re return
+#define ret return
 
 #define all(x) x.begin(), x.end()
 #define rall(x) x.rbegin(), x.rend()
+#define sz(x) (int)(x).size()
 
 #define fori(N) for (int i = 0; i < N; ++i)
 #define forj(N) for (int j = 0; j < N; ++j)
@@ -363,6 +382,10 @@ int gcd(int A, int B) {
    return A;
 }
 
+int lcm(int A, int B) {
+   return A / gcd(A, B) * B;
+}
+
 int fastPow(int V, int a, int MOD) {
    int res = 1;
    while (a != 0) {
@@ -417,6 +440,7 @@ void solve();
 void precalc();
 
 mt19937 mt_rand(chrono::steady_clock::now().time_since_epoch().count());
+mt19937_64 mt_rand64(chrono::steady_clock::now().time_since_epoch().count());
 
 int32_t main() {
 
@@ -451,6 +475,6 @@ void precalc() {}
 
 void solve() {
 
-    
+
 
 }
