@@ -1,14 +1,42 @@
 #pragma GCC optimize("O3")
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <algorithm>
+#include <string>
+#include <map>
+#include <unordered_map>
+#include <set>
+#include <unordered_set>
+#include <queue>
+#include <deque>
+#include <bitset>
+#include <random>
+#include <fstream>
+#include <iomanip>
+#include <chrono>
+#include <numeric>
+#include <cassert>
+#include <cstring>
+#include <list>
+#include <climits>
+#include <stack>
 
+#define GCC
+
+#ifdef GCC
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
+#endif
 
 #pragma comment(linker, "/STACK:102400000000")
 
 using namespace std;
+
+#ifdef GCC
 using namespace __gnu_pbds;
+#endif
 
 using ll = long long;
 using ull = unsigned long long;
@@ -26,6 +54,8 @@ using ld = long double;
                                                                                                                                     
 */                                                                                                                                          
 
+#ifdef GCC
+
 template<typename set_type> using ordered_set = tree<
     set_type,
     null_type,
@@ -33,6 +63,20 @@ template<typename set_type> using ordered_set = tree<
     rb_tree_tag,
     tree_order_statistics_node_update
 >;
+
+#endif
+
+template<typename T1, typename T2, typename T3> struct triple {
+   T1 first;
+   T2 second;
+   T3 third;
+};
+
+template<typename T> using v1 = vector<T>;
+template<typename T> using v2 = vector<vector<T>>;
+template<typename T> using v3 = vector<vector<vector<T>>>;
+template<typename T> using v4 = vector<vector<vector<vector<T>>>>;
+template<typename T> using v5 = vector<vector<vector<vector<vector<T>>>>>;
 
 using ii = pair<int, int>;
 using vii = vector<pair<int, int>>;
@@ -317,11 +361,20 @@ template<typename T> void amax(T& V1, const T& V2) {
    V1 = max(V1, V2);
 }
 
+template<typename T> void smax(T& V1, const T& V2) {
+   V1 = max(V1, V2);
+}
+
+
 template<typename T> void setmin(T& V1, const T& V2) {
    V1 = min(V1, V2);
 }
 
 template<typename T> void amin(T& V1, const T& V2) {
+   V1 = min(V1, V2);
+}
+
+template<typename T> void smin(T& V1, const T& V2) {
    V1 = min(V1, V2);
 }
 
@@ -383,6 +436,8 @@ int sgn(int V) {
 }
 
 int gcd(int A, int B) {
+   A = abs(A);
+   B = abs(B);
    while (B > 0) {
        A %= B;
        swap(A, B);
@@ -391,6 +446,8 @@ int gcd(int A, int B) {
 }
 
 int lcm(int A, int B) {
+   A = abs(A);
+   B = abs(B);
    return A / gcd(A, B) * B;
 }
 
@@ -476,13 +533,13 @@ int32_t main() {
    return 0;
 }
 
-const int INF = 2e15;
-const int MOD = 998244353;
+const int INF = (int)2e15;
+const int MOD = (int)998244353;
 
 void precalc() {}
 
 void solve() {
 
-
+   
 
 }
