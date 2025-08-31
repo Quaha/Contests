@@ -1,0 +1,6 @@
+1) Скачать VS code: https://code.visualstudio.com/download
+2) Скачать WSL: в cmd от админа ввести wsl --install
+3) Перезапустить ПК, создать пользователя
+4) Скачать расширение WSL для VS code
+5) ...
+

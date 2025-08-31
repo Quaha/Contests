@@ -509,6 +509,13 @@ mt19937_64 mt_rand64(chrono::steady_clock::now().time_since_epoch().count());
 
 int32_t main() {
 
+    #ifdef GCC
+    #ifdef FILEIO
+        freopen("workspace/input.txt", "r", stdin);
+        freopen("workspace/output.txt", "w", stdout);
+    #endif
+    #endif
+
    srand(time(0));
 
    ios_base::sync_with_stdio(false);
@@ -540,6 +547,8 @@ void precalc() {}
 
 void solve() {
 
-   
+   int V;
+   cin >> V;
+   cout << V;
 
 }
