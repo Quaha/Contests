@@ -306,7 +306,7 @@ template<typename T> T max(const vector<vector<T>>& arr) {
 }
 
 template<typename T> T max(const set<T>& st) {
-   return *(--st.end());
+   return *(st.rbegin());
 }
 
 template<typename T> T max(const unordered_set<T>& st) {
@@ -318,7 +318,7 @@ template<typename T> T max(const unordered_set<T>& st) {
 }
 
 template<typename T> T max(const multiset<T>& st) {
-   return *(--st.end());
+   return *(st.rbegin());
 }
 
 template<typename T> T min(const vector<T>& arr) {
@@ -358,11 +358,11 @@ template<typename T> void setmax(T& V1, const T& V2) {
 }
 
 template<typename T> void amax(T& V1, const T& V2) {
-   V1 = max(V1, V2);
+   setmax(V1, V2);
 }
 
 template<typename T> void smax(T& V1, const T& V2) {
-   V1 = max(V1, V2);
+   setmax(V1, V2);
 }
 
 
@@ -371,11 +371,11 @@ template<typename T> void setmin(T& V1, const T& V2) {
 }
 
 template<typename T> void amin(T& V1, const T& V2) {
-   V1 = min(V1, V2);
+   setmin(V1, V2);
 }
 
 template<typename T> void smin(T& V1, const T& V2) {
-   V1 = min(V1, V2);
+   setmin(V1, V2);
 }
 
 // sort
@@ -446,6 +446,9 @@ int gcd(int A, int B) {
 }
 
 int lcm(int A, int B) {
+   if (A == 0 || B == 0) {
+      throw "Incorrect lcm arguments";
+   }
    A = abs(A);
    B = abs(B);
    return A / gcd(A, B) * B;
@@ -463,6 +466,10 @@ int fastPow(int V, int a, int MOD) {
        a >>= 1;
    }
    return res;
+}
+
+int binPow(int V, int a, int MOD) {
+   return fastPow(V, a, MOD);
 }
 
 int getMex(const vector<int>& arr) {
@@ -547,6 +554,6 @@ void precalc() {}
 
 void solve() {
 
-   
+
 
 }
