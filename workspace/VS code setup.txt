@@ -1,6 +1,11 @@
 1) Скачать VS code: https://code.visualstudio.com/download
 2) Скачать WSL: в cmd от админа ввести wsl --install
-3) Перезапустить ПК, создать пользователя
-4) Скачать расширение WSL для VS code
-5) ...
-
+3) Перезапустить ПК, создать пользователя в Ubuntu
+4) Установить git: sudo apt-get install git
+5) Клонировать репозиторий с файлами: git clone https://github.com/Quaha/Contests
+6) Установить gcc: sudo apt-get install gcc (--fix-missing)
+7) Установить g++: sudo apt-get install g++ (--fix-missing)
+8) Установить gdb: sudo apt-get install gdb (--fix-missing)
+9) Открыть проект папку репозитория в VS code
+10) Скачать расширение WSL для VS code
+11) Скачать расширение C/C++ (Для WSL)

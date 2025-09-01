@@ -547,8 +547,6 @@ void precalc() {}
 
 void solve() {
 
-   int V;
-   cin >> V;
-   cout << V;
+   
 
 }
