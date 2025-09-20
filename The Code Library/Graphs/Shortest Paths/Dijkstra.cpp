@@ -20,7 +20,8 @@ void Dijkstra(int start_V, vi& dist, vi& path, const vvii& g) {
      * vertex to the others (or INF if there is no path) and
      * paths (previous vertices or -1 if there is no path to)
      * 
-     * g - adjacency lists - g[Ui] = {{Vij, Wij}, ...}, Wij >= 0, Ui >= 0
+     * g - adjacency lists - g[Ui] = {{Vij, Wij}, ...}, 
+     * Wij >= 0, Ui >= 0
      * 
      * Time Complexity:   O(N + MlogM)
      * Memory Complexity: O(N + M)
@@ -61,7 +62,8 @@ void naiveDijkstra(int start_V, vi& dist, vi& path, const vvii& g) {
      * vertex to the others (or INF if there is no path) and
      * paths (previous vertices or -1 if there is no path to)
      * 
-     * g - adjacency lists - g[Ui] = {{Vij, Wij}, ...}, Wij >= 0, Ui >= 0
+     * g - adjacency lists - g[Ui] = {{Vij, Wij}, ...},
+     * Wij >= 0, Ui >= 0
      * 
      * Time Complexity:   O(N^2)
      * Memory Complexity: O(N)
