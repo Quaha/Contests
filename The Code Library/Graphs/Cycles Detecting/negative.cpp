@@ -16,8 +16,11 @@ void detectNegativeCycle(vi& cycle, const vvii& g) {
 	 * graph and returns the sequence of vertices of the cycle,
 	 * if there is one (cycle = {u1, u2, ..., un, u1} or empty)
 	 * 
-     * g - adjacency lists - g[Ui] = {{Vij, Wij}, ...}, 
-	 * Wij - any, Ui >= 0
+     * g - adjacency lists - g[Ui] = {{Vij, Wij}, ...} 
+	 *
+	 * | Multiple Edges |   Loops   |  D/UD |  u   |  w  |
+	 * +----------------+-----------+-------+------+-----+
+	 * |      V         |     V     | V / V | >= 0 | any |
      * 
      * Time Complexity:   O(N*M)
      * Memory Complexity: O(N + M)
