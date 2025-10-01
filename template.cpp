@@ -64,6 +64,14 @@ template<typename set_type> using ordered_set = tree<
     tree_order_statistics_node_update
 >;
 
+template<typename set_type> using ordered_multiset = tree<
+    set_type,
+    null_type,
+    std::less_equal<set_type>,
+    rb_tree_tag,
+    tree_order_statistics_node_update
+>;
+
 #endif
 
 template<typename T1, typename T2, typename T3> struct triple {
