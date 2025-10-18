@@ -32,9 +32,19 @@ template<typename TreeType> struct MergeSortTree {
 	int size = 0;
 	vector<vector<TreeType>> tree;
 
-	void __mergeSort(vector<TreeType>& arr, int __i) {
+	MergeSortTree(vector<TreeType> arr) {
+		size = arr.size();
+		tree.resize(4 * size);
+		build(arr, 0);
+	}
+
+	void build(vector<TreeType>& arr) {
+		build(arr, 0);
+	}
+
+	void build(vector<TreeType>& arr, int x) {
 		if (arr.size() == 1) {
-			tree[__i] = arr;
+			tree[x] = arr;
 			return;
 		}
 		int m = arr.size() / 2;
@@ -44,14 +54,14 @@ template<typename TreeType> struct MergeSortTree {
 			lefts[i] = arr[i];
 		}
 
-		__mergeSort(lefts, __i * 2 + 1);
+		build(lefts, x * 2 + 1);
 
 		std::vector<TreeType> right(arr.size() - m);
 		for (int i = m; i < arr.size(); i++) {
 			right[i - m] = arr[i];
 		}
 
-		__mergeSort(right, __i * 2 + 2);
+		build(right, x * 2 + 2);
 
 		for (int i = 0, l = 0, r = 0; i < arr.size(); i++) {
 			if (l < lefts.size() && r < right.size()) {
@@ -70,29 +80,21 @@ template<typename TreeType> struct MergeSortTree {
 			}
 		}
 
-		tree[__i] = arr;
+		tree[x] = arr;
 	}
 
-	int __get(const TreeType& V, int l, int r, int __l, int __r, int __i) { // [l, r), 0-ind
-		if (l <= __l && __r <= r) {
-			return func(tree[__i], V);
+	int get(const TreeType& V, int l, int r, int lx, int rx, int x) { // [l, r), 0-ind
+		if (l <= lx && rx <= r) {
+			return func(tree[x], V);
 		}
-		if (__r <= l || r <= __l) {
+		if (rx <= l || r <= lx) {
 			return 0;
 		}
-		int __m = (__l + __r) / 2;
-		int V1 = __get(V, l, r, __l, __m, __i * 2 + 1);
-		int V2 = __get(V, l, r, __m, __r, __i * 2 + 2);
-		return V1 + V2;
+		int mx = (lx + rx) / 2;
+		return get(V, l, r, lx, mx, x * 2 + 1) + get(V, l, r, mx, rx, x * 2 + 2);
 	}
 
-	MergeSortTree(vector<TreeType> arr) {
-		size = arr.size();
-		tree.resize(4 * size);
-		__mergeSort(arr, 0);
-	}
-
-	int sum(const TreeType& V, int l, int r) { // [l, r], 0-ind
-		return __get(V, l, r + 1, 0, size, 0);
+	int get(const TreeType& V, int l, int r) { // [l, r], 0-ind
+		return get(V, l, r + 1, 0, size, 0);
 	}
 };

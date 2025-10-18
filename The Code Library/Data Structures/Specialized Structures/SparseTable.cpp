@@ -44,7 +44,7 @@ template<typename TableType> struct SparseTable {
 		}
 	}
 
-	TableType sum(int l, int r) { // [l, r], 0-ind
+	TableType get(int l, int r) { // [l, r], 0-ind
 		int deg = degrees[r - l + 1];
 		return func(table[deg][l], table[deg][r - pows[deg] + 1]);
 	}

@@ -34,7 +34,7 @@ struct DSU {
 		cnt--;
 	}
 
-	bool inAdjacent(int x, int y) {
+	bool isAdjacent(int x, int y) {
 		return getParent(x) == getParent(y);
 	}
 

@@ -111,11 +111,6 @@ using vvl = vector<vector<long long>>;
 using vvvl = vector<vector<vector<long long>>>;
 using vvvvl = vector<vector<vector<vector<long long>>>>;
 
-using vl = vector<long long>;
-using vvl = vector<vector<long long>>;
-using vvvl = vector<vector<vector<long long>>>;
-using vvvvl = vector<vector<vector<vector<long long>>>>;
-
 using vc = vector<char>;
 using vvc = vector<vector<char>>;
 using vvvc = vector<vector<vector<char>>>;
@@ -362,7 +357,9 @@ template<typename T> T min(const multiset<T>& st) {
 }
 
 template<typename T> void setmax(T& V1, const T& V2) {
-	V1 = max(V1, V2);
+	if (V2 > V1) {
+		V1 = V2;
+	}
 }
 
 template<typename T> void amax(T& V1, const T& V2) {
@@ -375,7 +372,9 @@ template<typename T> void smax(T& V1, const T& V2) {
 
 
 template<typename T> void setmin(T& V1, const T& V2) {
-	V1 = min(V1, V2);
+	if (V2 < V1) {
+		V1 = V2;
+	}
 }
 
 template<typename T> void amin(T& V1, const T& V2) {
