@@ -4,6 +4,8 @@ using namespace std;
 
 void ManakerOdd(vector<int>& m, const string& s) {
 
+    // O(n)
+
     // a b a c a b a
     // 1 2 1 4 1 2 1
 
@@ -27,6 +29,8 @@ void ManakerOdd(vector<int>& m, const string& s) {
 }
 
 void ManakerEven(vector<int>& m, const string& s) {
+
+    // O(n)
 
     // a b b a c a a
     // 0 0 2 0 0 0 1
