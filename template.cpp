@@ -1,4 +1,10 @@
+#ifndef FILEIO
 #pragma GCC optimize("O3")
+#endif
+
+#define GCC
+
+//#include <bits/stdc++.h>
 
 #include <iostream>
 #include <vector>
@@ -23,26 +29,9 @@
 #include <climits>
 #include <stack>
 
-#define GCC
-
-#ifdef GCC
-#include <ext/pb_ds/assoc_container.hpp>
-#include <ext/pb_ds/tree_policy.hpp>
-#endif
-
-#pragma comment(linker, "/STACK:102400000000")
+#pragma comment(linker, "/STACK:102400000000") // only MSVC
 
 using namespace std;
-
-#ifdef GCC
-using namespace __gnu_pbds;
-#endif
-
-using ll = long long;
-using ull = unsigned long long;
-using ld = long double;
-
-#define int ll
 
 /*
 
@@ -52,9 +41,13 @@ using ld = long double;
 ██   ██ ██      ██      ██ ██  ██ ██ ██           ██ 
 ██████  ███████ ██      ██ ██   ████ ███████ ███████ 
 
-*/                                                                                                                                          
+*/                                                                                                       
 
 #ifdef GCC
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+
+using namespace __gnu_pbds;
 
 template<typename set_type> using ordered_set = tree<
     set_type,
@@ -63,16 +56,13 @@ template<typename set_type> using ordered_set = tree<
     rb_tree_tag,
     tree_order_statistics_node_update
 >;
-
-template<typename set_type> using ordered_multiset = tree<
-    set_type,
-    null_type,
-    std::less_equal<set_type>,
-    rb_tree_tag,
-    tree_order_statistics_node_update
->;
-
 #endif
+
+using ll = long long;
+using ull = unsigned long long;
+using ld = long double;
+
+#define int ll
 
 template<typename T1, typename T2, typename T3> struct triple {
 	T1 first;
@@ -175,27 +165,27 @@ template<typename T1, typename T2> std::istream& operator>>(std::istream& in, pa
 }
 
 template<typename T1, typename T2> std::ostream& operator<<(std::ostream& out, const pair<T1, T2>& p) {
-	out << p.first << ' ' << p.second << '\n';
+	out << p.first << ' ' << p.second;
 	return out;
 }
 
 template<typename T> std::ostream& operator<<(std::ostream& out, const set<T>& S) {
 	for (const T& V : S) {
-		cout << V << ' ';
+		out << V << ' ';
 	}
 	return out;
 }
 
 template<typename T> std::ostream& operator<<(std::ostream& out, const unordered_set<T>& S) {
 	for (const T& V : S) {
-		cout << V << ' ';
+		out << V << ' ';
 	}
 	return out;
 }
 
 template<typename T> std::ostream& operator<<(std::ostream& out, const multiset<T>& S) {
 	for (const T& V : S) {
-		cout << V << ' ';
+		out << V << ' ';
 	}
 	return out;
 }
@@ -385,13 +375,14 @@ template<typename T> void smin(T& V1, const T& V2) {
 	setmin(V1, V2);
 }
 
-// sort
-
 template<typename T> void sort(T& obj) {
 	sort(all(obj));
 }
 
 template<typename T> void usort(T& obj) {
+	if (obj.empty()) {
+		return;
+	}
 	sort(all(obj));
 	int p = 0;
 	for (size_t i = 1; i < obj.size(); ++i) {
@@ -543,8 +534,8 @@ int32_t main() {
 	//cout << fixed << setprecision(2);
 	//cout.precision(20);
 	
-	//freopen("math.in", "r", stdin);
-	//freopen("math.out", "w", stdout);
+	//freopen("input.in", "r", stdin);
+	//freopen("output.out", "w", stdout);
 	
 	precalc();
 	
@@ -558,13 +549,16 @@ int32_t main() {
 	return 0;
 }
 
-const int INF = (int)2e15;
-const int MOD = (int)998244353;
+constexpr int INF = (int)2e15;
+constexpr int MOD = (int)998244353;
 
 void precalc() {}
 
 void solve() {
 	
-	
+	vi arr;
+	usort(arr);
+
+	cout << arr.size();
 
 }
