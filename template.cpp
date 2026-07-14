@@ -556,9 +556,6 @@ void precalc() {}
 
 void solve() {
 	
-	vi arr;
-	usort(arr);
-
-	cout << arr.size();
+	
 
 }

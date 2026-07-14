@@ -22,7 +22,10 @@
                 "pipeCwd": "${workspaceFolder}",
                 "pipeProgram": "/usr/bin/bash",
                 "pipeArgs": ["-c"],
-                "debuggerPath": "/usr/bin/gdb"
+                "debuggerPath": "/usr/bin/gdb",
+                "pipeEnv": {
+                    "DEBUGINFOD_URLS": ""
+                }
             },
             "sourceFileMap": {
                 "/mnt/c": "C:\\"
