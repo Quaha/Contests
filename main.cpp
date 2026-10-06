@@ -119,7 +119,7 @@ using vvvld = v3<ld>;
 using vvvvld = v4<ld>;
 using vvvvvld = v5<ld>;
 
-#define y1 __y1_y1_y1__
+#define y1 y1_y1_y1__
 #define fi first
 #define se second
 #define pb push_back
@@ -251,14 +251,12 @@ int sgn(int V) {
 }
 
 int fastPow(int V, int a, int MOD) {
-	int res = 1;
-	while (a != 0) {
-		if (a & 1) {
-			res *= V;
-			res %= MOD;
-		}
-		V *= V;
-		V %= MOD;
+	int res = 1 % MOD;
+	V %= MOD;
+	if (V < 0) V += MOD;
+	while (a > 0) {
+		if (a & 1) res = res * V % MOD;
+		V = V * V % MOD;
 		a >>= 1;
 	}
 	return res;
@@ -269,7 +267,7 @@ int binPow(int V, int a, int MOD) { return fastPow(V, a, MOD); }
 int getMex(const vector<int>& arr) {
 	vector<bool> seen(arr.size() + 1);
 	for (int x : arr) {
-		if (0 <= x && x < arr.size()) seen[x] = true;
+		if (0 <= x && x < sz(arr)) seen[x] = true;
 	}
 	int result = 0;
 	while (seen[result]) ++result;
@@ -318,7 +316,7 @@ int32_t main() {
 	precalc();
 
 	int tests = 1;
-	cin >> tests;
+	//cin >> tests;
 
 	for (int test_case = 1; test_case <= tests; ++test_case) {
 		solve();
@@ -334,6 +332,9 @@ void precalc() {}
 
 void solve() {
 
-	
+	vvi arr(2, vi(2));
+	cin >> arr;
+
+	cout << arr << "\n";
 
 }
