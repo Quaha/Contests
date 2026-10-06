@@ -2,8 +2,6 @@
 #pragma GCC optimize("O3")
 #endif
 
-#define GCC
-
 //#include <bits/stdc++.h>
 
 #include <iostream>
@@ -11,12 +9,15 @@
 #include <cmath>
 #include <algorithm>
 #include <string>
+#include <string_view>
 #include <map>
 #include <unordered_map>
 #include <set>
 #include <unordered_set>
 #include <queue>
 #include <deque>
+#include <stack>
+#include <list>
 #include <bitset>
 #include <random>
 #include <fstream>
@@ -25,37 +26,23 @@
 #include <numeric>
 #include <cassert>
 #include <cstring>
-#include <list>
 #include <climits>
-#include <stack>
+#include <ctime>
 
-#pragma comment(linker, "/STACK:102400000000") // only MSVC
+#ifdef _MSC_VER
+#pragma comment(linker, "/STACK:1073741824") // 1024 MB, only MSVC
+#endif
 
 using namespace std;
 
-/*
+// ============================== DEFINES ==============================
 
-██████  ███████ ███████ ██ ███    ██ ███████ ███████ 
-██   ██ ██      ██      ██ ████   ██ ██      ██      
-██   ██ █████   █████   ██ ██ ██  ██ █████   ███████ 
-██   ██ ██      ██      ██ ██  ██ ██ ██           ██ 
-██████  ███████ ██      ██ ██   ████ ███████ ███████ 
-
-*/                                                                                                       
-
-#ifdef GCC
+// PBDS ordered set
+#if __has_include(<ext/pb_ds/assoc_container.hpp>)
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
-
 using namespace __gnu_pbds;
-
-template<typename set_type> using ordered_set = tree<
-    set_type,
-    null_type,
-    std::less<set_type>,
-    rb_tree_tag,
-    tree_order_statistics_node_update
->;
+template<typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 #endif
 
 using ll = long long;
@@ -76,380 +63,191 @@ template<typename T> using v3 = vector<vector<vector<T>>>;
 template<typename T> using v4 = vector<vector<vector<vector<T>>>>;
 template<typename T> using v5 = vector<vector<vector<vector<vector<T>>>>>;
 
-using ii = pair<int, int>;
-using vii = vector<pair<int, int>>;
-using vvii = vector<vector<pair<int, int>>>;
-using vvvii = vector<vector<vector<pair<int, int>>>>;
-
-using pll = pair<long long, long long>;
-using vll = vector<pair<long long, long long>>;
-using vvll = vector<vector<pair<long long, long long>>>;
-using vvvll = vector<vector<vector<pair<long long, long long>>>>;
-
-using vb = vector<bool>;
-using vvb = vector<vector<bool>>;
-using vvvb = vector<vector<vector<bool>>>;
-using vvvvb = vector<vector<vector<vector<bool>>>>;
-
 using vi = vector<int>;
-using vvi = vector<vector<int>>;
-using vvvi = vector<vector<vector<int>>>;
-using vvvvi = vector<vector<vector<vector<int>>>>;
+using vvi = v2<int>;
+using vvvi = v3<int>;
+using vvvvi = v4<int>;
+using vvvvvi = v5<int>;
 
 using vl = vector<long long>;
-using vvl = vector<vector<long long>>;
-using vvvl = vector<vector<vector<long long>>>;
-using vvvvl = vector<vector<vector<vector<long long>>>>;
+using vvl = v2<ll>;
+using vvvl = v3<ll>;
+using vvvvl = v4<ll>;
+using vvvvvl = v5<ll>;
+
+using vll = vector<long long>;
+using vvll = v2<ll>;
+using vvvll = v3<ll>;
+using vvvvll = v4<ll>;
+using vvvvvll = v5<ll>;
+
+using ii = pair<int, int>;
+using vii = v1<ii>;
+using vvii = v2<ii>;
+using vvvii = v3<ii>;
+using vvvvii = v4<ii>;
+using vvvvvii = v5<ii>;
+
+using pll = pair<long long, long long>;
+using vpll = v1<pll>;
+using vvpll = v2<pll>;
+using vvvpll = v3<pll>;
+using vvvvpll = v4<pll>;
+using vvvvvpll = v5<pll>;
+
+using vb = vector<bool>;
+using vvb = v2<bool>;
+using vvvb = v3<bool>;
+using vvvvb = v4<bool>;
+using vvvvvb = v5<bool>;
 
 using vc = vector<char>;
-using vvc = vector<vector<char>>;
-using vvvc = vector<vector<vector<char>>>;
-using vvvvc = vector<vector<vector<vector<char>>>>;
+using vvc = v2<char>;
+using vvvc = v3<char>;
+using vvvvc = v4<char>;
+using vvvvvc = v5<char>;
 
 using vs = vector<string>;
-using vvs = vector<vector<string>>;
-using vvvs = vector<vector<vector<string>>>;
+using vvs = v2<string>;
+using vvvs = v3<string>;
+using vvvvs = v4<string>;
+using vvvvvs = v5<string>;
 
 using vld = vector<ld>;
-using vvld = vector<vector<ld>>;
-using vvvld = vector<vector<vector<ld>>>;
+using vvld = v2<ld>;
+using vvvld = v3<ld>;
+using vvvvld = v4<ld>;
+using vvvvvld = v5<ld>;
 
-#define y1 y1_
-
+#define y1 __y1_y1_y1__
 #define fi first
 #define se second
-
+#define pb push_back
 #define co continue
 #define con continue
-#define pb push_back
-
 #define re return
 #define ret return
 
-#define all(x) x.begin(), x.end()
-#define rall(x) x.rbegin(), x.rend()
+#define all(x) (x).begin(), (x).end()
+#define rall(x) (x).rbegin(), (x).rend()
 #define sz(x) (int)(x).size()
 
-#define fori(N) for (int i = 0; i < N; ++i)
-#define forj(N) for (int j = 0; j < N; ++j)
-#define fork(N) for (int k = 0; k < N; ++k)
+#define fori(N) for (int i = 0; i < (N); ++i)
+#define forj(N) for (int j = 0; j < (N); ++j)
+#define fork(N) for (int k = 0; k < (N); ++k)
+#define fori1(N) for (int i = 1; i < (N); ++i)
+#define forj1(N) for (int j = 1; j < (N); ++j)
+#define fork1(N) for (int k = 1; k < (N); ++k)
 
-#define fori1(N) for (int i = 1; i < N; ++i)
-#define forj1(N) for (int j = 1; j < N; ++j)
-#define fork1(N) for (int k = 1; k < N; ++k)
+template<typename T, typename = void> struct is_iterable : false_type {};
+template<typename T> struct is_iterable<T, void_t<decltype(declval<T&>().begin())>> : true_type {};
+template<typename T> constexpr bool is_range_v = is_iterable<T>::value && !is_convertible_v<T, string_view>;
 
-template<typename T> std::istream& operator>>(std::istream& in, vector<T>& arr) {
-	for (T& object : arr) {
-		in >> object;
-	}
+template<typename T1, typename T2> istream& operator>>(istream& in, pair<T1, T2>& p);
+template<typename T1, typename T2> ostream& operator<<(ostream& out, const pair<T1, T2>& p);
+template<typename C> auto operator>>(istream& in, C& c) -> enable_if_t<is_range_v<C>, istream&>;
+template<typename C> auto operator<<(ostream& out, const C& c) -> enable_if_t<is_range_v<C>, ostream&>;
+
+template<typename T1, typename T2> istream& operator>>(istream& in, pair<T1, T2>& p) {
+	return in >> p.first >> p.second;
+}
+
+template<typename T1, typename T2> ostream& operator<<(ostream& out, const pair<T1, T2>& p) {
+	return out << p.first << ' ' << p.second;
+}
+
+template<typename C> auto operator>>(istream& in, C& c) -> enable_if_t<is_range_v<C>, istream&> {
+	for (auto& x : c) in >> x;
 	return in;
 }
 
-template<typename T> std::ostream& operator<<(std::ostream& out, const vector<T>& arr) {
-	for (const T& object : arr) {
-		out << object << ' ';
+template<typename C> auto operator<<(ostream& out, const C& c) -> enable_if_t<is_range_v<C>, ostream&> {
+	bool first = true;
+	for (const auto& x : c) {
+		if (!first) out << (is_range_v<decay_t<decltype(x)>> ? '\n' : ' ');
+		out << x;
+		first = false;
 	}
 	return out;
 }
 
-template<typename T> std::ostream& operator<<(std::ostream& out, const vector<vector<T>>& arr) {
-	for (const vector<T>& object : arr) {
-		out << object << '\n';
-	}
-	return out;
-}
+// ============================== FUNCTIONS ==============================
 
-template<typename T1, typename T2> std::istream& operator>>(std::istream& in, pair<T1, T2>& p) {
-	in >> p.first >> p.second;
-	return in;
-}
+template<typename T> void cin0(vector<T>& arr) { cin >> arr; }
+template<typename T> void cin1(vector<T>& arr) { for (size_t i = 1; i < arr.size(); ++i) cin >> arr[i]; }
 
-template<typename T1, typename T2> std::ostream& operator<<(std::ostream& out, const pair<T1, T2>& p) {
-	out << p.first << ' ' << p.second;
-	return out;
-}
+template<typename T> void cout0(const vector<T>& arr) { cout << arr << '\n'; }
 
-template<typename T> std::ostream& operator<<(std::ostream& out, const set<T>& S) {
-	for (const T& V : S) {
-		out << V << ' ';
-	}
-	return out;
-}
-
-template<typename T> std::ostream& operator<<(std::ostream& out, const unordered_set<T>& S) {
-	for (const T& V : S) {
-		out << V << ' ';
-	}
-	return out;
-}
-
-template<typename T> std::ostream& operator<<(std::ostream& out, const multiset<T>& S) {
-	for (const T& V : S) {
-		out << V << ' ';
-	}
-	return out;
-}
-
-/*
-
-███████ ██    ██ ███    ██  ██████ ████████ ██  ██████  ███    ██ ███████ 
-██      ██    ██ ████   ██ ██         ██    ██ ██    ██ ████   ██ ██      
-█████   ██    ██ ██ ██  ██ ██         ██    ██ ██    ██ ██ ██  ██ ███████ 
-██      ██    ██ ██  ██ ██ ██         ██    ██ ██    ██ ██  ██ ██      ██ 
-██       ██████  ██   ████  ██████    ██    ██  ██████  ██   ████ ███████
-
-*/
-
-// cin/cout
-
-template<typename T> void cin0(vector<T>& arr) {
-	for (size_t i = 0; i < arr.size(); ++i) {
-		cin >> arr[i];
-	}
-}
-
-template<typename T> void cin1(vector<T>& arr) {
-	for (size_t i = 1; i < arr.size(); ++i) {
-		cin >> arr[i];
-	}
-}
-
-template<typename T> void cout0(const vector<T>& arr) {
-	for (size_t i = 0; i + 1 < arr.size(); ++i) {
-		cout << arr[i] << ' ';
-	}
-	cout << arr.back() << '\n';
-}
-
-template<typename T> void cout0(const vector<vector<T>>& arr) {
-	for (size_t i = 0; i < arr.size(); ++i) {
-		for (size_t j = 0; j + 1 < arr[i].size(); ++j) {
-			cout << arr[i][j] << ' ';
-		}
-		cout << arr[i].back() << '\n';
-	}
-}
-
-template<typename T> void cout1(const vector<T>& arr) {
-	for (size_t i = 1; i + 1 < arr.size(); ++i) {
-		cout << arr[i] << ' ';
-	}
-	cout << arr.back() << '\n';
-}
-
-template<typename T> void cout1(const vector<vector<T>>& arr) {
-	for (size_t i = 1; i < arr.size(); ++i) {
-		for (size_t j = 1; j + 1 < arr[i].size(); ++j) {
-			cout << arr[i][j] << ' ';
-		}
-		cout << arr[i].back() << '\n';
-	}
-}
-
-// summed
-
-template<typename T> T summed(const vector<T>& arr) {
-	T result = static_cast<T>(0);
-	for (const auto& V: arr) {
-		result += V;
-	}
-	return result;
-}
-
-template<typename T> T summed(const set<T>& st) {
-	T result = static_cast<T>(0);
-	for (const auto& V: st) {
-		result += V;
-	}
-	return result;
-}
-
-template<typename T> T summed(const unordered_set<T>& st) {
-	T result = static_cast<T>(0);
-	for (const auto& V: st) {
-		result += V;
-	}
-	return result;
-}
-
-template<typename T> T summed(const multiset<T>& st) {
-	T result = static_cast<T>(0);
-	for (const auto& V: st) {
-		result += V;
-	}
-	return result;
-}
-
-// max/min
-
-template<typename T> T max(const vector<T>& arr) {
-	T V = arr[0];
-	for (size_t i = 1; i < arr.size(); ++i) {
-		V = max(V, arr[i]);
-	}
-	return V;
-}
-
-template<typename T> T max(const vector<vector<T>>& arr) {
-	T result = max(arr[0]);
-	for (size_t i = 1; i < arr.size(); ++i) {
-		result = max(result, max(arr[i]));
-	}
-	return result;
-}
-
-template<typename T> T max(const set<T>& st) {
-	return *(st.rbegin());
-}
-
-template<typename T> T max(const unordered_set<T>& st) {
-	T result = *st.begin();
-	for (const auto& V: st) {
-		result = max(result, V);
-	}
-	return result;
-}
-
-template<typename T> T max(const multiset<T>& st) {
-	return *(st.rbegin());
-}
-
-template<typename T> T min(const vector<T>& arr) {
-	T V = arr[0];
-	for (size_t i = 1; i < arr.size(); ++i) {
-		V = min(V, arr[i]);
-	}
-	return V;
-}
-
-template<typename T> T min(const vector<vector<T>>& arr) {
-	T result = min(arr[0]);
-	for (size_t i = 1; i < arr.size(); ++i) {
-		result = min(result, min(arr[i]));
-	}
-	return result;
-}
-
-template<typename T> T min(const set<T>& st) {
-	return *(st.begin());
-}
-
-template<typename T> T min(const unordered_set<T>& st) {
-	T result = *st.begin();
-	for (const auto& V: st) {
-		result = min(result, V);
-	}
-	return result;
-}
-
-template<typename T> T min(const multiset<T>& st) {
-	return *(st.begin());
-}
-
-template<typename T> void setmax(T& V1, const T& V2) {
-	if (V2 > V1) {
-		V1 = V2;
-	}
-}
-
-template<typename T> void amax(T& V1, const T& V2) {
-	setmax(V1, V2);
-}
-
-template<typename T> void smax(T& V1, const T& V2) {
-	setmax(V1, V2);
-}
-
-
-template<typename T> void setmin(T& V1, const T& V2) {
-	if (V2 < V1) {
-		V1 = V2;
-	}
-}
-
-template<typename T> void amin(T& V1, const T& V2) {
-	setmin(V1, V2);
-}
-
-template<typename T> void smin(T& V1, const T& V2) {
-	setmin(V1, V2);
-}
-
-template<typename T> void sort(T& obj) {
-	sort(all(obj));
-}
-
-template<typename T> void usort(T& obj) {
-	if (obj.empty()) {
-		return;
-	}
-	sort(all(obj));
-	int p = 0;
-	for (size_t i = 1; i < obj.size(); ++i) {
-		if (obj[i] != obj[p]) {
-			obj[++p] = obj[i];
+template<typename T> void cout1(const vector<T>& arr) {  // skips index 0 (in every dimension)
+	if constexpr (is_range_v<T>) {
+		for (size_t i = 1; i < arr.size(); ++i) {
+			cout1(arr[i]);
 		}
 	}
-	obj.resize(p + 1);
+	else {
+		for (size_t i = 1; i < arr.size(); ++i) {
+			cout << arr[i] << (i + 1 < arr.size() ? " " : "");
+		}
+		cout << '\n';
+	}
 }
 
-template<typename T> void rsort(T& obj) {
-	sort(rall(obj));
+template<typename C> auto summed(const C& c) {
+	return accumulate(c.begin(), c.end(), typename C::value_type{});
 }
 
-template<typename T> void reverse(T& obj) {
-	reverse(all(obj));
+template<typename T, typename = void> struct is_ordered : false_type {};
+template<typename T> struct is_ordered<T, void_t<typename T::key_compare>> : true_type {};
+
+template<typename C, enable_if_t<is_iterable<C>::value, ll> = 0> auto max(const C& c) {
+	if constexpr (is_range_v<typename C::value_type>) {
+		auto result = max(*c.begin());
+		for (const auto& x : c) result = max(result, max(x));
+		return result;
+	}
+	else if constexpr (is_ordered<C>::value) {
+		return *c.rbegin();
+	}
+	else {
+		return *max_element(c.begin(), c.end());
+	}
 }
 
-template<typename T> T sorted(T obj) {
-	sort(obj);
-	return obj;
+template<typename C, enable_if_t<is_iterable<C>::value, ll> = 0> auto min(const C& c) {
+	if constexpr (is_range_v<typename C::value_type>) {
+		auto result = min(*c.begin());
+		for (const auto& x : c) {
+			result = min(result, min(x));
+		}
+		return result;
+	}
+	else if constexpr (is_ordered<C>::value) {
+		return *c.begin();
+	}
+	else {
+		return *min_element(c.begin(), c.end());
+	}
 }
 
-template<typename T> T usorted(T obj) {
-	usort(obj);
-	return obj;
-}
+template<typename T1, typename T2> bool setmax(T1& V1, const T2& V2) { return V1 < V2 ? V1 = V2, true : false; }
+template<typename T1, typename T2> bool setmin(T1& V1, const T2& V2) { return V2 < V1 ? V1 = V2, true : false; }
+template<typename T1, typename T2> bool amax(T1& V1, const T2& V2) { return setmax(V1, V2); }
+template<typename T1, typename T2> bool smax(T1& V1, const T2& V2) { return setmax(V1, V2); }
+template<typename T1, typename T2> bool amin(T1& V1, const T2& V2) { return setmin(V1, V2); }
+template<typename T1, typename T2> bool smin(T1& V1, const T2& V2) { return setmin(V1, V2); }
 
-template<typename T> T rsorted(T obj) {
-	rsort(obj);
-	return obj;
-}
+template<typename T> void sort(T& obj) { sort(all(obj)); }
+template<typename T> void rsort(T& obj) { sort(rall(obj)); }
+template<typename T> void usort(T& obj) { sort(all(obj)); obj.erase(unique(all(obj)), obj.end()); }
+template<typename T> void reverse(T& obj) { reverse(all(obj)); }
 
-template<typename T> T reversed(T obj) {
-	reverse(obj);
-	return obj;
-}
-
-// math
+template<typename T> T sorted(T obj) { sort(obj); return obj; }
+template<typename T> T rsorted(T obj) { rsort(obj); return obj; }
+template<typename T> T usorted(T obj) { usort(obj); return obj; }
+template<typename T> T reversed(T obj) { reverse(obj); return obj; }
 
 int sgn(int V) {
-	if (V < 0) {
-		return -1;
-	}
-	if (V > 0) {
-		return 1;
-	}
-	return 0;
-}
-
-int gcd(int A, int B) {
-	A = abs(A);
-	B = abs(B);
-	while (B > 0) {
-		A %= B;
-		swap(A, B);
-	}
-	return A;
-}
-
-int lcm(int A, int B) {
-	if (A == 0 || B == 0) {
-		throw "Incorrect lcm arguments";
-	}
-	A = abs(A);
-	B = abs(B);
-	return A / gcd(A, B) * B;
+	return (V > 0) - (V < 0);
 }
 
 int fastPow(int V, int a, int MOD) {
@@ -466,29 +264,21 @@ int fastPow(int V, int a, int MOD) {
 	return res;
 }
 
-int binPow(int V, int a, int MOD) {
-	return fastPow(V, a, MOD);
-}
+int binPow(int V, int a, int MOD) { return fastPow(V, a, MOD); }
 
 int getMex(const vector<int>& arr) {
-	int N = arr.size();
-	vector<bool> cnt_sort(N + 1, true);
-	for (size_t i = 0; i < arr.size(); ++i) {
-		if (arr[i] < N) {
-			cnt_sort[arr[i]] = false;
-		}
+	vector<bool> seen(arr.size() + 1);
+	for (int x : arr) {
+		if (0 <= x && x < arr.size()) seen[x] = true;
 	}
-	for (int i = 0; i <= N; i++) {
-		if (cnt_sort[i]) return i;
-	}
-	return 0;
+	int result = 0;
+	while (seen[result]) ++result;
+	return result;
 }
 
 bool isPrime(int N) {
-	if (N < 2) {
-		return false;
-	}
-	for (int i = 2; i * i <= N; i++) {
+	if (N < 2) return false;
+	for (int i = 2; i * i <= N; ++i) {
 		if (N % i == 0) {
 			return false;
 		}
@@ -497,18 +287,10 @@ bool isPrime(int N) {
 }
 
 int getBit(int N, int i) {
-	return ((N >> i) & 1);
+	return (N >> i) & 1;
 }
 
-/*
-
- ██████  ██████  ██████  ███████     ███████ ████████  █████  ██████  ████████ ███████     ██   ██ ███████ ██████  ███████ 
-██      ██    ██ ██   ██ ██          ██         ██    ██   ██ ██   ██    ██    ██          ██   ██ ██      ██   ██ ██      
-██      ██    ██ ██   ██ █████       ███████    ██    ███████ ██████     ██    ███████     ███████ █████   ██████  █████   
-██      ██    ██ ██   ██ ██               ██    ██    ██   ██ ██   ██    ██         ██     ██   ██ ██      ██   ██ ██      
- ██████  ██████  ██████  ███████     ███████    ██    ██   ██ ██   ██    ██    ███████     ██   ██ ███████ ██   ██ ███████ 
-
-*/                                                                                                                                                               
+// ============================== CODE STARTS HERE ==============================
 
 void solve();
 void precalc();
@@ -517,32 +299,28 @@ mt19937 mt_rand(chrono::steady_clock::now().time_since_epoch().count());
 mt19937_64 mt_rand64(chrono::steady_clock::now().time_since_epoch().count());
 
 int32_t main() {
-	
-	#ifdef GCC
-	#ifdef FILEIO
+#ifdef FILEIO
 	freopen("workspace/input.txt", "r", stdin);
 	freopen("workspace/output.txt", "w", stdout);
-	#endif
-	#endif
-	
+#endif
+
 	srand(time(0));
-	
+
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
-	cout.tie(nullptr);
-	
+
 	//cout << fixed << setprecision(2);
 	//cout.precision(20);
-	
+
 	//freopen("input.in", "r", stdin);
 	//freopen("output.out", "w", stdout);
-	
+
 	precalc();
-	
-	int __TESTS_IN_TASK__ = 1;
-	//cin >> __TESTS_IN_TASK__;
-	
-	for (int __TEST_CASE__ = 1; __TEST_CASE__ <= __TESTS_IN_TASK__; __TEST_CASE__++) {
+
+	int tests = 1;
+	//cin >> tests;
+
+	for (int test_case = 1; test_case <= tests; ++test_case) {
 		solve();
 	}
 
@@ -555,7 +333,7 @@ constexpr int MOD = (int)998244353;
 void precalc() {}
 
 void solve() {
-	
-	
+
+
 
 }
